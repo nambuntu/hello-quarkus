@@ -11,3 +11,7 @@ mvn compile quarkus:dev
 ### Cool features:
  
 * hot-code replacement supported
+* test supported
+
+## Some notes
+* Test will be run on port 8081, need to ensure that port is free or exception thrown.

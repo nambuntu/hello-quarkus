@@ -21,7 +21,7 @@ public class GreetingResourceTest {
 		.get("/greeting/hello/{name}")
 		.then()
 		.statusCode(200)
-		.body(is("hello " + uuid));
+		.body(is("Hello " + uuid));
 	}
 
 }
