@@ -1,16 +1,25 @@
 package work.inlumina.quarkus;
 
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-@Path("/hello")
+import org.jboss.resteasy.annotations.jaxrs.PathParam;
+
+import work.inlumina.quarkus.service.GreetingService;
+
+@Path("/greeting")
 public class GreetingResource {
 
-    @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public String hello() {
-        return "hello";
-    }
+	@Inject
+	GreetingService greetingService;
+
+	@GET
+	@Produces(MediaType.TEXT_PLAIN)
+	@Path("/hello/{name}")
+	public String hello(@PathParam String name) {
+		return greetingService.greeting(name);
+	}
 }
